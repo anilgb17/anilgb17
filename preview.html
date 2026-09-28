@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>Anil GB (anilgb17) - GitHub Profile Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #0d1117;
+      --bg-subtle: #161b22;
+      --border-color: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-green: #238636;
+      --accent-green-hover: #2ea043;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .top-bar {
+      max-width: 920px;
+      margin: 0 auto 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .top-bar .title {
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-live {
+      background: rgba(35, 134, 54, 0.2);
+      border: 1px solid #3fb950;
+      color: #3fb950;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .action-btn {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--accent-green-hover);
+      transform: translateY(-1px);
+    }
+
+    .action-btn.secondary {
+      background: #21262d;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .action-btn.secondary:hover {
+      background: #30363d;
+    }
+
+    .profile-container {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .tab-header {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(22, 27, 34, 0.95);
+      padding: 0 16px;
+    }
+
+    .tab-item {
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-item:hover {
+      color: var(--text-primary);
+    }
+
+    .tab-item.active {
+      color: var(--accent-blue);
+      border-bottom-color: var(--accent-blue);
+    }
+
+    .content-area {
+      padding: 32px 28px;
+    }
+
+    .raw-view {
+      display: none;
+      background: #090d13;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      color: #79c0ff;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.6;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    /* GitHub Markdown Style Simulator */
+    .markdown-body {
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+
+    .markdown-body h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      color: #58a6ff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .markdown-body hr {
+      height: 1px;
+      background-color: var(--border-color);
+      border: none;
+      margin: 28px 0;
+    }
+
+    .markdown-body pre {
+      background-color: #090d13;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      margin: 16px 0;
+      color: #79c0ff;
+    }
+
+    .markdown-body ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .markdown-body li {
+      margin-bottom: 6px;
+    }
+
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .markdown-body table td {
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      background: rgba(13, 17, 23, 0.6);
+      border-radius: 8px;
+    }
+
+    .markdown-body table td h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .markdown-body details {
+      background: #090d13;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+
+    .markdown-body summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #58a6ff;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent-green);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      display: none;
+      animation: fadeIn 0.3s ease;
+      z-index: 1000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls Bar -->
+  <div class="top-bar">
+    <div class="title">
+      <span>🚀 anilgb17 / README.md</span>
+      <span class="badge-live">LIVE ANIMATED PREVIEW</span>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="action-btn secondary" onclick="switchTab('raw')">View Raw Markdown</button>
+      <button class="action-btn" id="copyBtn" onclick="copyMarkdown()">📋 Copy Full README</button>
+    </div>
+  </div>
+
+  <!-- Profile Card -->
+  <div class="profile-container">
+    <div class="tab-header">
+      <div class="tab-item active" id="tab-visual" onclick="switchTab('visual')">Visual Profile View</div>
+      <div class="tab-item" id="tab-raw" onclick="switchTab('raw')">Raw Markdown (Code)</div>
+    </div>
+
+    <div class="content-area">
+      <!-- Visual Profile Simulation -->
+      <div id="visual-content" class="markdown-body">
+        
+        <!-- Header Banner with Capsule Render -->
+        <div align="center">
+          <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=220&section=header&text=ANIL%20GB&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=Software%20Developer%20%7C%20AI%20%26%20Computer%20Vision%20%7C%20IoT%20Innovator&descAlignY=58&descAlign=50" width="100%" alt="Anil GB Header Banner"/>
+          <br/><br/>
+          
+          <!-- Typing SVG Animation -->
+          <a href="https://github.com/anilgb17">
+            <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&background=0D111700&center=true&vCenter=true&width=650&height=50&lines=Hi+there!+%F0%9F%91%8B+I'm+Anil+GB;Full+Stack+Developer+%26+Software+Engineer+%F0%9F%92%BB;AI%2C+Computer+Vision+%26+Deep+Learning+Builder+%F0%9F%A4%96;IoT%2C+Smart+Systems+%26+Hardware+Innovator+%E2%9A%A1;Crafting+Scalable%2C+High-Performance+Web+Apps+%F0%9F%9A%80" alt="Typing SVG" />
+          </a>
+
+          <p align="center" style="margin-top: 14px;">
+            <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
+              <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+            </a>
+            <a href="https://www.youtube.com/@anilGB9019" target="_blank">
+              <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/>
+            </a>
+            <a href="https://github.com/anilgb17" target="_blank">
+              <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/>
+            </a>
+            <a href="https://github.com/anilgb17?tab=repositories" target="_blank">
+              <img src="https://img.shields.io/badge/25+_Repositories-00D26A?style=for-the-badge&logo=git&logoColor=white" alt="Repositories Badge"/>
+            </a>
+            <img src="https://komarev.com/ghpvc/?username=anilgb17&color=38bdf8&style=for-the-badge&label=VIEWS" alt="Profile Views"/>
+          </p>
+        </div>
+
+        <hr/>
+
+        <h3>💫 About Me</h3>
+        <pre><code>name: Anil GB
+handle: anilgb17
+focus_areas: [Full-Stack Development, AI & Computer Vision, Embedded IoT]
+passions: [Clean Code, System Architecture, UI/UX Animation, Open Source]
+motto: "Transforming ambitious ideas into clean, functional, and intelligent digital products."</code></pre>
+
+        <ul>
+          <li>🔭 <b>Currently Building</b>: Intelligent web platforms and computer vision systems.</li>
+          <li>💡 <b>Specialties</b>: Scalable JavaScript/TypeScript applications, Python AI models, and IoT sensor integrations.</li>
+          <li>🌱 <b>Deepening Knowledge</b>: Advanced Neural Architectures, Cloud Microservices, and High-Performance Web Graphics.</li>
+          <li>🎯 <b>Open For</b>: Collaborative development on impactful open-source tools and cutting-edge software solutions.</li>
+          <li>💬 <b>Ask Me About</b>: <code>React</code>, <code>Node.js</code>, <code>Python</code>, <code>Computer Vision</code>, <code>IoT Automation</code>, <code>Data Structures & Algorithms</code>.</li>
+        </ul>
+
+        <hr/>
+
+        <h3>🛠️ Tech Stack & Arsenal</h3>
+        <div align="center">
+          <p style="margin-bottom: 12px;">
+            <img src="https://skillicons.dev/icons?i=js,ts,python,cs,c,cpp,html,css&theme=dark" alt="Languages"/>
+          </p>
+          <p style="margin-bottom: 12px;">
+            <img src="https://skillicons.dev/icons?i=react,tailwind,bootstrap,vite,nodejs,express,mongodb,mysql&theme=dark" alt="Frameworks and Databases"/>
+          </p>
+          <p>
+            <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,linux,arduino,firebase,figma&theme=dark" alt="Tools and Platforms"/>
+          </p>
+        </div>
+
+        <hr/>
+
+        <h3>🚀 Featured Engineering Projects</h3>
+        <table>
+          <tr>
+            <td width="50%" valign="top">
+              <h3 align="center">🚗 Car Service Management System</h3>
+              <p align="center" style="margin-bottom: 8px;">
+                <a href="https://github.com/anilgb17/Car-Service-Management-System" target="_blank">
+                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="Car Service System"/>
+                </a>
+                <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
+                <img src="https://img.shields.io/badge/Platform-Web%20App-brightgreen?style=flat-square" alt="Web App"/>
+              </p>
+              <p style="font-size: 14px; color: var(--text-secondary);">Comprehensive service booking platform featuring a customer booking wizard alongside an administrative suite managing work orders, mechanics, and operational metrics.</p>
+            </td>
+            <td width="50%" valign="top">
+              <h3 align="center">🛡️ AI Helmet & Mask Detection (ATM)</h3>
+              <p align="center" style="margin-bottom: 8px;">
+                <a href="https://github.com/anilgb17/AI-Based-helmet-and-mask-detection-for-secure-ATM-transactions" target="_blank">
+                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="AI ATM System"/>
+                </a>
+                <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+                <img src="https://img.shields.io/badge/AI-Computer%20Vision-red?style=flat-square&logo=opencv" alt="CV"/>
+              </p>
+              <p style="font-size: 14px; color: var(--text-secondary);">Real-time visual security system preventing fraudulent transactions by detecting masked or helmeted faces in ATM booths before authorizing transaction flows.</p>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%" valign="top">
+              <h3 align="center">📊 DSA Visualizer</h3>
+              <p align="center" style="margin-bottom: 8px;">
+                <a href="https://github.com/anilgb17/DSA-Visualizer" target="_blank">
+                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="DSA Visualizer"/>
+                </a>
+                <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
+                <img src="https://img.shields.io/badge/Visualizer-Interactive-orange?style=flat-square" alt="Visualizer"/>
+              </p>
+              <p style="font-size: 14px; color: var(--text-secondary);">Interactive algorithm visualizer rendering step-by-step executions of core data structures, sorting algorithms, and traversal paths with dynamic animation speeds.</p>
+            </td>
+            <td width="50%" valign="top">
+              <h3 align="center">💡 Intelligent Headlight Control (IHCS)</h3>
+              <p align="center" style="margin-bottom: 8px;">
+                <a href="https://github.com/anilgb17/Intelligent-Headlight-Control-System-IHCS-" target="_blank">
+                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="IHCS"/>
+                </a>
+                <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+                <img src="https://img.shields.io/badge/Hardware-IoT%20%2F%20Sensors-8A2BE2?style=flat-square&logo=arduino" alt="IoT"/>
+              </p>
+              <p style="font-size: 14px; color: var(--text-secondary);">Automated automotive safety system utilizing microcontrollers and optical sensors to eliminate night glare by auto-dimming headlights for oncoming traffic.</p>
+            </td>
+          </tr>
+        </table>
+
+        <hr/>
+
+        <h3>📈 Activity & Engineering Analytics</h3>
+        <div align="center">
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anilgb17&theme=tokyonight" alt="Anil's Profile Details" style="max-width: 48%; min-width: 320px;" />
+            <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=anilgb17&theme=tokyonight" alt="Languages Breakdown" style="max-width: 48%; min-width: 320px;" />
+          </div>
+          <div style="margin-top: 16px;">
+            <img src="https://streak-stats.demolab.com/?user=anilgb17&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&border_radius=10" alt="Streak Stats" style="max-width: 100%; width: 95%;" />
+          </div>
+        </div>
+
+        <hr/>
+
+        <h3>⚡ Daily Inspiration & Terminal</h3>
+        <div align="center">
+          <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Quote" style="max-width: 100%;" />
+        </div>
+
+        <hr/>
+
+        <h3>🌐 Connect With Me</h3>
+        <div align="center" style="margin-bottom: 20px;">
+          <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
+            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+          </a>
+          &nbsp;
+          <a href="https://www.youtube.com/@anilGB9019" target="_blank">
+            <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Channel"/>
+          </a>
+          &nbsp;
+          <a href="https://www.youtube.com/@GIRISHSFX" target="_blank">
+            <img src="https://img.shields.io/badge/YouTube_SFX-282828?style=for-the-badge&logo=youtube&logoColor=red" alt="Visuals Channel"/>
+          </a>
+          &nbsp;
+          <a href="https://github.com/anilgb17" target="_blank">
+            <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+          </a>
+        </div>
+
+        <!-- Footer Wave -->
+        <div align="center">
+          <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=120&section=footer" width="100%" alt="Footer Wave"/>
+          <p align="center" style="color: var(--text-secondary); font-size: 13px; margin-top: 10px;">
+            Crafted with passion, caffeine, and clean code &bull; <b>&copy; Anil GB</b>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Raw Markdown View -->
+      <div id="raw-content" class="raw-view"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">✅ Markdown copied to clipboard!</div>
+
+  <script>
+    const markdownContent = `<div align="center">
+
+  <!-- Animated Header Wave Banner -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=220&section=header&text=ANIL%20GB&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=Software%20Developer%20%7C%20AI%20%26%20Computer%20Vision%20%7C%20IoT%20Innovator&descAlignY=58&descAlign=50" width="100%" alt="Anil GB Header Banner"/>
+
+  <!-- Animated Typing SVG -->
+  <a href="https://github.com/anilgb17">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&background=0D111700&center=true&vCenter=true&width=650&height=50&lines=Hi+there!+%F0%9F%91%8B+I'm+Anil+GB;Full+Stack+Developer+%26+Software+Engineer+%F0%9F%92%BB;AI%2C+Computer+Vision+%26+Deep+Learning+Builder+%F0%9F%A4%96;IoT%2C+Smart+Systems+%26+Hardware+Innovator+%E2%9A%A1;Crafting+Scalable%2C+High-Performance+Web+Apps+%F0%9F%9A%80" alt="Typing SVG" />
+  </a>
+
+  <!-- Profile Badges & Stats Counter -->
+  <p align="center">
+    <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
+      <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+    </a>
+    <a href="https://www.youtube.com/@anilGB9019" target="_blank">
+      <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/>
+    </a>
+    <a href="https://github.com/anilgb17" target="_blank">
+      <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/>
+    </a>
+    <a href="https://github.com/anilgb17?tab=repositories" target="_blank">
+      <img src="https://img.shields.io/badge/25+_Repositories-00D26A?style=for-the-badge&logo=git&logoColor=white" alt="Repositories Badge"/>
+    </a>
+    <img src="https://komarev.com/ghpvc/?username=anilgb17&color=38bdf8&style=for-the-badge&label=VIEWS" alt="Profile Views"/>
+  </p>
+
+</div>
+
+---
+
+### 💫 About Me
+
+\`\`\`yaml
+name: Anil GB
+handle: anilgb17
+focus_areas: [Full-Stack Development, AI & Computer Vision, Embedded IoT]
+passions: [Clean Code, System Architecture, UI/UX Animation, Open Source]
+motto: "Transforming ambitious ideas into clean, functional, and intelligent digital products."
+\`\`\`
+
+- 🔭 **Currently Building**: Intelligent web platforms and computer vision systems.
+- 💡 **Specialties**: Scalable JavaScript/TypeScript applications, Python AI models, and IoT sensor integrations.
+- 🌱 **Deepening Knowledge**: Advanced Neural Architectures, Cloud Microservices, and High-Performance Web Graphics.
+- 🎯 **Open For**: Collaborative development on impactful open-source tools and cutting-edge software solutions.
+- 💬 **Ask Me About**: \`React\`, \`Node.js\`, \`Python\`, \`Computer Vision\`, \`IoT Automation\`, \`Data Structures & Algorithms\`.
+
+<br/>
+
+---
+
+### 🛠️ Tech Stack & Arsenal
+
+<div align="center">
+
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=js,ts,python,cs,c,cpp,html,css&theme=dark" alt="Languages"/>
+  </p>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=react,tailwind,bootstrap,vite,nodejs,express,mongodb,mysql&theme=dark" alt="Frameworks and Databases"/>
+  </p>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,linux,arduino,firebase,figma&theme=dark" alt="Tools and Platforms"/>
+  </p>
+
+</div>
+
+<details>
+<summary><b>📂 Categorized Skills Breakdown (Click to expand)</b></summary>
+<br/>
+
+| Category | Technologies & Tools |
+| :--- | :--- |
+| **Languages** | JavaScript (ES6+), TypeScript, Python 3, C#, C, C++, HTML5, CSS3 |
+| **Frontend Engineering** | React.js, Tailwind CSS, Responsive Web Design, DOM Manipulation, CSS Animations |
+| **Backend & Databases** | Node.js, Express.js, RESTful APIs, MongoDB, MySQL, Firebase, LocalStorage Persistence |
+| **AI & Embedded Systems** | Computer Vision (OpenCV), Deep Learning, Microcontrollers, Sensor Integration (IoT) |
+| **Dev Tools & Workflow** | Git, GitHub Actions, VS Code, Linux CLI, Postman, NPM, JSON APIs |
+
+</details>
+
+<br/>
+
+---
+
+### 🚀 Featured Engineering Projects
+
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🚗 Car Service Management System</h3>
+      <p align="center">
+        <a href="https://github.com/anilgb17/Car-Service-Management-System">
+          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="Car Service System"/>
+        </a>
+        <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
+        <img src="https://img.shields.io/badge/Platform-Web%20App-brightgreen?style=flat-square" alt="Web App"/>
+      </p>
+      <p>Comprehensive service booking platform featuring a customer booking wizard alongside an administrative suite managing work orders, mechanics, and operational metrics.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">🛡️ AI Helmet & Mask Detection (ATM)</h3>
+      <p align="center">
+        <a href="https://github.com/anilgb17/AI-Based-helmet-and-mask-detection-for-secure-ATM-transactions">
+          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="AI ATM System"/>
+        </a>
+        <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+        <img src="https://img.shields.io/badge/AI-Computer%20Vision-red?style=flat-square&logo=opencv" alt="CV"/>
+      </p>
+      <p>Real-time visual security system preventing fraudulent transactions by detecting masked or helmeted faces in ATM booths before authorizing transaction flows.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">📊 DSA Visualizer</h3>
+      <p align="center">
+        <a href="https://github.com/anilgb17/DSA-Visualizer">
+          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="DSA Visualizer"/>
+        </a>
+        <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
+        <img src="https://img.shields.io/badge/Visualizer-Interactive-orange?style=flat-square" alt="Visualizer"/>
+      </p>
+      <p>Interactive algorithm visualizer rendering step-by-step executions of core data structures, sorting algorithms, and traversal paths with dynamic animation speeds.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">💡 Intelligent Headlight Control (IHCS)</h3>
+      <p align="center">
+        <a href="https://github.com/anilgb17/Intelligent-Headlight-Control-System-IHCS-">
+          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="IHCS"/>
+        </a>
+        <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+        <img src="https://img.shields.io/badge/Hardware-IoT%20%2F%20Sensors-8A2BE2?style=flat-square&logo=arduino" alt="IoT"/>
+      </p>
+      <p>Automated automotive safety system utilizing microcontrollers and optical sensors to eliminate night glare by auto-dimming headlights for oncoming traffic.</p>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+### 📈 Activity & Engineering Analytics
+
+<div align="center">
+  <table border="0">
+    <tr>
+      <td align="center" width="50%">
+        <a href="https://github.com/anilgb17">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anilgb17&theme=tokyonight" alt="Anil's Profile Details" width="100%"/>
+        </a>
+      </td>
+      <td align="center" width="50%">
+        <a href="https://github.com/anilgb17">
+          <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=anilgb17&theme=tokyonight" alt="Languages Breakdown" width="100%"/>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <a href="https://github.com/anilgb17">
+          <img src="https://streak-stats.demolab.com/?user=anilgb17&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&border_radius=10" alt="Streak Stats" width="95%"/>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br/>
+
+---
+
+### 🐍 Contribution Activity Snake
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/anilgb17/anilgb17/output/github-contribution-grid-snake-dark.svg" alt="Contribution Grid Snake" width="100%"/>
+</div>
+
+<br/>
+
+---
+
+### ⚡ Daily Inspiration & Terminal
+
+<div align="center">
+  <a href="https://github.com/anilgb17">
+    <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Quote" />
+  </a>
+</div>
+
+<br/>
+
+---
+
+### 🌐 Connect With Me
+
+<div align="center">
+
+  <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  &nbsp;
+  <a href="https://www.youtube.com/@anilGB9019" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Channel"/>
+  </a>
+  &nbsp;
+  <a href="https://www.youtube.com/@GIRISHSFX" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube_SFX-282828?style=for-the-badge&logo=youtube&logoColor=red" alt="Visuals Channel"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/anilgb17" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+
+</div>
+
+<br/>
+
+<div align="center">
+
+  <!-- Animated Footer Wave -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=120&section=footer" width="100%" alt="Footer Wave"/>
+
+  <p align="center">
+    <sub>Crafted with passion, caffeine, and clean code &bull; <b>&copy; Anil GB</b></sub>
+  </p>
+
+</div>`;
+
+    document.getElementById('raw-content').textContent = markdownContent;
+
+    function switchTab(tab) {
+      const visualEl = document.getElementById('visual-content');
+      const rawEl = document.getElementById('raw-content');
+      const tabVisual = document.getElementById('tab-visual');
+      const tabRaw = document.getElementById('tab-raw');
+
+      if (tab === 'visual') {
+        visualEl.style.display = 'block';
+        rawEl.style.display = 'none';
+        tabVisual.classList.add('active');
+        tabRaw.classList.remove('active');
+      } else {
+        visualEl.style.display = 'none';
+        rawEl.style.display = 'block';
+        tabVisual.classList.remove('active');
+        tabRaw.classList.add('active');
+      }
+    }
+
+    function copyMarkdown() {
+      navigator.clipboard.writeText(markdownContent).then(() => {
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        const copyBtn = document.getElementById('copyBtn');
+        copyBtn.textContent = '✅ Copied!';
+        setTimeout(() => {
+          toast.style.display = 'none';
+          copyBtn.textContent = '📋 Copy Full README';
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+</html>
