@@ -23,7 +23,7 @@
 <a href="https://www.youtube.com/@anilGB9019">
   <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
 </a>
-<a href="https://anil-portfolio.vercel.app">
+<a href="https://anil-gb-portfolio.vercel.app">
   <img src="https://img.shields.io/badge/Portfolio-F59E0B?style=for-the-badge&logo=vercel&logoColor=07080b"/>
 </a>
 <img src="https://komarev.com/ghpvc/?username=anilgb17&color=f59e0b&style=for-the-badge&label=PROFILE+VIEWS"/>
@@ -197,9 +197,9 @@ open_to     : Full-Time Roles | Collaborations | Open Source
 
 | Domain | Stack | Link |
 |:---:|:---|:---:|
-| **Java Full Stack Developer** | Spring Boot, React.js, MySQL, Microservices, JWT | [Download PDF](https://anil-portfolio.vercel.app/Anil_Govind_Badiger_Java_Developer_Resume.pdf) |
-| **AI / ML Engineer** | Python, TensorFlow, CNN, OpenCV, 97.5% Accuracy | [Download PDF](https://anil-portfolio.vercel.app/Anil_Govind_Badiger_AI_ML_Resume.pdf) |
-| **Data Analyst** | SQL, Power BI, Pandas, NumPy, EDA | [Download PDF](https://anil-portfolio.vercel.app/Anil_Govind_Badiger_Data_Analyst_Resume.pdf) |
+| **Java Full Stack Developer** | Spring Boot, React.js, MySQL, Microservices, JWT | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Govind_Badiger_Java_Developer_Resume.pdf) |
+| **AI / ML Engineer** | Python, TensorFlow, CNN, OpenCV, 97.5% Accuracy | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Govind_Badiger_AI_ML_Resume.pdf) |
+| **Data Analyst** | SQL, Power BI, Pandas, NumPy, EDA | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Govind_Badiger_Data_Analyst_Resume.pdf) |
 
 </div>
 
@@ -215,7 +215,7 @@ open_to     : Full-Time Roles | Collaborations | Open Source
   <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 &nbsp;
-<a href="https://anil-portfolio.vercel.app">
+<a href="https://anil-gb-portfolio.vercel.app">
   <img src="https://img.shields.io/badge/Portfolio-Visit_Site-F59E0B?style=for-the-badge&logo=vercel&logoColor=07080b"/>
 </a>
 &nbsp;
