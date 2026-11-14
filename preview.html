@@ -3,708 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="referrer" content="no-referrer">
-  <title>Anil GB (anilgb17) - GitHub Profile Preview</title>
+  <title>Anil Govind Badiger (anilgb17) - GitHub Profile Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
-      --bg-canvas: #0d1117;
-      --bg-subtle: #161b22;
-      --border-color: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --accent-blue: #38bdf8;
-      --accent-purple: #a855f7;
-      --accent-green: #238636;
-      --accent-green-hover: #2ea043;
+      --bg-canvas: #07080b;
+      --bg-card: #0d0f14;
+      --border-color: #1e2430;
+      --accent-gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-canvas);
-      color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
       padding: 24px;
     }
-
     .top-bar {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg-subtle);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 14px 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     }
-
-    .top-bar .title {
-      font-weight: 700;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .badge-live {
-      background: rgba(35, 134, 54, 0.2);
-      border: 1px solid #3fb950;
-      color: #3fb950;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 12px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 10px;
+    }
+    .btn {
+      background: #161b22;
+      color: #f8fafc;
+      border: 1px solid #30363d;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
       font-weight: 600;
-    }
-
-    .action-btn {
-      background: var(--accent-green);
-      color: white;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .action-btn:hover {
-      background: var(--accent-green-hover);
-      transform: translateY(-1px);
-    }
-
-    .action-btn.secondary {
-      background: #21262d;
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-    }
-
-    .action-btn.secondary:hover {
-      background: #30363d;
-    }
-
-    .profile-container {
-      max-width: 920px;
-      margin: 0 auto;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .tab-header {
-      display: flex;
-      border-bottom: 1px solid var(--border-color);
-      background: rgba(22, 27, 34, 0.95);
-      padding: 0 16px;
-    }
-
-    .tab-item {
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      border-bottom: 2px solid transparent;
       cursor: pointer;
       transition: all 0.2s;
     }
-
-    .tab-item:hover {
-      color: var(--text-primary);
-    }
-
-    .tab-item.active {
-      color: var(--accent-blue);
-      border-bottom-color: var(--accent-blue);
-    }
-
-    .content-area {
-      padding: 32px 28px;
-    }
-
-    .raw-view {
-      display: none;
-      background: #090d13;
+    .btn:hover { background: #21262d; border-color: #8b949e; }
+    .btn.primary { background: var(--accent-gold); color: #07080b; border-color: var(--accent-gold); }
+    .btn.primary:hover { background: #d97706; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+    #raw-view {
+      display: none;
+      background: #030712;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
       padding: 20px;
-      font-family: 'Fira Code', monospace;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
-      color: #79c0ff;
       white-space: pre-wrap;
       word-break: break-all;
-      line-height: 1.6;
-      max-height: 600px;
-      overflow-y: auto;
     }
-
-    /* GitHub Markdown Style Simulator */
-    .markdown-body {
-      font-size: 15px;
-      color: var(--text-primary);
-    }
-
-    .markdown-body h3 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-top: 24px;
-      margin-bottom: 16px;
-      color: #58a6ff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .markdown-body hr {
-      height: 1px;
-      background-color: var(--border-color);
-      border: none;
-      margin: 28px 0;
-    }
-
-    .markdown-body pre {
-      background-color: #090d13;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 16px;
-      font-family: 'Fira Code', monospace;
-      font-size: 13px;
-      overflow-x: auto;
-      margin: 16px 0;
-      color: #79c0ff;
-    }
-
-    .markdown-body ul {
-      margin-left: 20px;
-      margin-bottom: 16px;
-    }
-
-    .markdown-body li {
-      margin-bottom: 6px;
-    }
-
-    .markdown-body table {
+    .rendered table {
       width: 100%;
       border-collapse: collapse;
-      margin: 16px 0;
-    }
-
-    .markdown-body table td {
+      margin: 20px 0;
       border: 1px solid var(--border-color);
+    }
+    .rendered th, .rendered td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+    }
+    .rendered th {
+      background: #11141c;
+      color: var(--accent-gold);
+    }
+    .rendered hr {
+      border: 0;
+      height: 1px;
+      background: var(--border-color);
+      margin: 30px 0;
+    }
+    .rendered pre {
+      background: #030712;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
       padding: 16px;
-      background: rgba(13, 17, 23, 0.6);
-      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
     }
-
-    .markdown-body table td h3 {
-      margin-top: 0;
-      font-size: 16px;
-    }
-
-    .markdown-body details {
-      background: #090d13;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px 18px;
+    .rendered blockquote {
+      border-left: 4px solid var(--accent-gold);
+      padding-left: 16px;
       margin: 16px 0;
+      color: #cbd5e1;
+      font-style: italic;
     }
-
-    .markdown-body summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: #58a6ff;
-    }
-
     .toast {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--accent-green);
-      color: white;
-      padding: 12px 24px;
+      background: var(--accent-gold);
+      color: #07080b;
+      padding: 12px 20px;
       border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
       display: none;
-      animation: fadeIn 0.3s ease;
-      z-index: 1000;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+      z-index: 999;
     }
   </style>
 </head>
 <body>
-
-  <!-- Controls Bar -->
   <div class="top-bar">
-    <div class="title">
-      <span>🚀 anilgb17 / README.md</span>
-      <span class="badge-live">LIVE ANIMATED PREVIEW</span>
+    <div>
+      <strong>anilgb17 / README.md</strong>
+      <span class="badge-live">OBSIDIAN + GOLD REDESIGN</span>
     </div>
     <div style="display: flex; gap: 10px;">
-      <button class="action-btn secondary" onclick="switchTab('raw')">View Raw Markdown</button>
-      <button class="action-btn" id="copyBtn" onclick="copyMarkdown()">📋 Copy Full README</button>
+      <button class="btn" id="toggleBtn" onclick="toggleRaw()">View Raw Markdown</button>
+      <button class="btn primary" id="copyBtn" onclick="copyRaw()">📋 Copy Full README</button>
     </div>
   </div>
 
-  <!-- Profile Card -->
-  <div class="profile-container">
-    <div class="tab-header">
-      <div class="tab-item active" id="tab-visual" onclick="switchTab('visual')">Visual Profile View</div>
-      <div class="tab-item" id="tab-raw" onclick="switchTab('raw')">Raw Markdown (Code)</div>
-    </div>
-
-    <div class="content-area">
-      <!-- Visual Profile Simulation -->
-      <div id="visual-content" class="markdown-body">
-        
-        <!-- Header Banner with Capsule Render -->
-        <div align="center">
-          <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=220&section=header&text=ANIL%20GB&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=Software%20Developer%20%7C%20AI%20%26%20Computer%20Vision%20%7C%20IoT%20Innovator&descAlignY=58&descAlign=50" width="100%" alt="Anil GB Header Banner"/>
-          <br/><br/>
-          
-          <!-- Typing SVG Animation -->
-          <a href="https://github.com/anilgb17">
-            <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&background=0D111700&center=true&vCenter=true&width=650&height=50&lines=Hi+there!+%F0%9F%91%8B+I'm+Anil+GB;Full+Stack+Developer+%26+Software+Engineer+%F0%9F%92%BB;AI%2C+Computer+Vision+%26+Deep+Learning+Builder+%F0%9F%A4%96;IoT%2C+Smart+Systems+%26+Hardware+Innovator+%E2%9A%A1;Crafting+Scalable%2C+High-Performance+Web+Apps+%F0%9F%9A%80" alt="Typing SVG" />
-          </a>
-
-          <p align="center" style="margin-top: 14px;">
-            <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
-              <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-            </a>
-            <a href="https://www.youtube.com/@anilGB9019" target="_blank">
-              <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/>
-            </a>
-            <a href="https://github.com/anilgb17" target="_blank">
-              <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/>
-            </a>
-            <a href="https://github.com/anilgb17?tab=repositories" target="_blank">
-              <img src="https://img.shields.io/badge/25+_Repositories-00D26A?style=for-the-badge&logo=git&logoColor=white" alt="Repositories Badge"/>
-            </a>
-            <img src="https://komarev.com/ghpvc/?username=anilgb17&color=38bdf8&style=for-the-badge&label=VIEWS" alt="Profile Views"/>
-          </p>
-        </div>
-
-        <hr/>
-
-        <h3>💫 About Me</h3>
-        <pre><code>name: Anil GB
-handle: anilgb17
-focus_areas: [Full-Stack Development, AI & Computer Vision, Embedded IoT]
-passions: [Clean Code, System Architecture, UI/UX Animation, Open Source]
-motto: "Transforming ambitious ideas into clean, functional, and intelligent digital products."</code></pre>
-
-        <ul>
-          <li>🔭 <b>Currently Building</b>: Intelligent web platforms and computer vision systems.</li>
-          <li>💡 <b>Specialties</b>: Scalable JavaScript/TypeScript applications, Python AI models, and IoT sensor integrations.</li>
-          <li>🌱 <b>Deepening Knowledge</b>: Advanced Neural Architectures, Cloud Microservices, and High-Performance Web Graphics.</li>
-          <li>🎯 <b>Open For</b>: Collaborative development on impactful open-source tools and cutting-edge software solutions.</li>
-          <li>💬 <b>Ask Me About</b>: <code>React</code>, <code>Node.js</code>, <code>Python</code>, <code>Computer Vision</code>, <code>IoT Automation</code>, <code>Data Structures & Algorithms</code>.</li>
-        </ul>
-
-        <hr/>
-
-        <h3>🛠️ Tech Stack & Arsenal</h3>
-        <div align="center">
-          <p style="margin-bottom: 12px;">
-            <img src="https://skillicons.dev/icons?i=js,ts,python,cs,c,cpp,html,css&theme=dark" alt="Languages"/>
-          </p>
-          <p style="margin-bottom: 12px;">
-            <img src="https://skillicons.dev/icons?i=react,tailwind,bootstrap,vite,nodejs,express,mongodb,mysql&theme=dark" alt="Frameworks and Databases"/>
-          </p>
-          <p>
-            <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,linux,arduino,firebase,figma&theme=dark" alt="Tools and Platforms"/>
-          </p>
-        </div>
-
-        <hr/>
-
-        <h3>🚀 Featured Engineering Projects</h3>
-        <table>
-          <tr>
-            <td width="50%" valign="top">
-              <h3 align="center">🚗 Car Service Management System</h3>
-              <p align="center" style="margin-bottom: 8px;">
-                <a href="https://github.com/anilgb17/Car-Service-Management-System" target="_blank">
-                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="Car Service System"/>
-                </a>
-                <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
-                <img src="https://img.shields.io/badge/Platform-Web%20App-brightgreen?style=flat-square" alt="Web App"/>
-              </p>
-              <p style="font-size: 14px; color: var(--text-secondary);">Comprehensive service booking platform featuring a customer booking wizard alongside an administrative suite managing work orders, mechanics, and operational metrics.</p>
-            </td>
-            <td width="50%" valign="top">
-              <h3 align="center">🛡️ AI Helmet & Mask Detection (ATM)</h3>
-              <p align="center" style="margin-bottom: 8px;">
-                <a href="https://github.com/anilgb17/AI-Based-helmet-and-mask-detection-for-secure-ATM-transactions" target="_blank">
-                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="AI ATM System"/>
-                </a>
-                <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-                <img src="https://img.shields.io/badge/AI-Computer%20Vision-red?style=flat-square&logo=opencv" alt="CV"/>
-              </p>
-              <p style="font-size: 14px; color: var(--text-secondary);">Real-time visual security system preventing fraudulent transactions by detecting masked or helmeted faces in ATM booths before authorizing transaction flows.</p>
-            </td>
-          </tr>
-          <tr>
-            <td width="50%" valign="top">
-              <h3 align="center">📊 DSA Visualizer</h3>
-              <p align="center" style="margin-bottom: 8px;">
-                <a href="https://github.com/anilgb17/DSA-Visualizer" target="_blank">
-                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="DSA Visualizer"/>
-                </a>
-                <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
-                <img src="https://img.shields.io/badge/Visualizer-Interactive-orange?style=flat-square" alt="Visualizer"/>
-              </p>
-              <p style="font-size: 14px; color: var(--text-secondary);">Interactive algorithm visualizer rendering step-by-step executions of core data structures, sorting algorithms, and traversal paths with dynamic animation speeds.</p>
-            </td>
-            <td width="50%" valign="top">
-              <h3 align="center">💡 Intelligent Headlight Control (IHCS)</h3>
-              <p align="center" style="margin-bottom: 8px;">
-                <a href="https://github.com/anilgb17/Intelligent-Headlight-Control-System-IHCS-" target="_blank">
-                  <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="IHCS"/>
-                </a>
-                <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-                <img src="https://img.shields.io/badge/Hardware-IoT%20%2F%20Sensors-8A2BE2?style=flat-square&logo=arduino" alt="IoT"/>
-              </p>
-              <p style="font-size: 14px; color: var(--text-secondary);">Automated automotive safety system utilizing microcontrollers and optical sensors to eliminate night glare by auto-dimming headlights for oncoming traffic.</p>
-            </td>
-          </tr>
-        </table>
-
-        <hr/>
-
-        <h3>📈 Activity & Engineering Analytics</h3>
-        <div align="center">
-          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anilgb17&theme=tokyonight" alt="Anil's Profile Details" style="max-width: 48%; min-width: 320px;" />
-            <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=anilgb17&theme=tokyonight" alt="Languages Breakdown" style="max-width: 48%; min-width: 320px;" />
-          </div>
-          <div style="margin-top: 16px;">
-            <img src="https://streak-stats.demolab.com/?user=anilgb17&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&border_radius=10" alt="Streak Stats" style="max-width: 100%; width: 95%;" />
-          </div>
-        </div>
-
-        <hr/>
-
-        <h3>⚡ Daily Inspiration & Terminal</h3>
-        <div align="center">
-          <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Quote" style="max-width: 100%;" />
-        </div>
-
-        <hr/>
-
-        <h3>🌐 Connect With Me</h3>
-        <div align="center" style="margin-bottom: 20px;">
-          <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
-            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-          </a>
-          &nbsp;
-          <a href="https://www.youtube.com/@anilGB9019" target="_blank">
-            <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Channel"/>
-          </a>
-          &nbsp;
-          <a href="https://www.youtube.com/@GIRISHSFX" target="_blank">
-            <img src="https://img.shields.io/badge/YouTube_SFX-282828?style=for-the-badge&logo=youtube&logoColor=red" alt="Visuals Channel"/>
-          </a>
-          &nbsp;
-          <a href="https://github.com/anilgb17" target="_blank">
-            <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-          </a>
-        </div>
-
-        <!-- Footer Wave -->
-        <div align="center">
-          <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=120&section=footer" width="100%" alt="Footer Wave"/>
-          <p align="center" style="color: var(--text-secondary); font-size: 13px; margin-top: 10px;">
-            Crafted with passion, caffeine, and clean code &bull; <b>&copy; Anil GB</b>
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Raw Markdown View -->
-      <div id="raw-content" class="raw-view"></div>
-    </div>
+  <div class="container">
+    <div id="preview" class="rendered"></div>
+    <pre id="raw-view"></pre>
   </div>
 
-  <div class="toast" id="toast">✅ Markdown copied to clipboard!</div>
+  <div id="toast" class="toast">✅ README markdown copied to clipboard!</div>
 
   <script>
-    const markdownContent = `<div align="center">
+    const rawMarkdown = "\ufeff<div align=\"center\">\n\n<!-- Cinematic Header Banner \u2014 Obsidian + Amber Gold -->\n<img src=\"https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,1,2,3,6&height=260&section=header&text=ANIL%20GOVIND%20BADIGER&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=42&desc=FULL%20STACK%20%E2%80%A2%20AI%2FML%20ENGINEER%20%E2%80%A2%20DATA%20ANALYST&descAlignY=62&descAlign=50&descSize=16&descColor=f59e0b\" width=\"100%\"/>\n\n<!-- Typing Animation \u2014 Outfit / JetBrains Mono, Amber Gold -->\n<img src=\"https://readme-typing-svg.demolab.com?font=Outfit&weight=800&size=24&pause=1200&color=F59E0B&background=00000000&center=true&vCenter=true&width=800&height=65&lines=I+BUILD+HIGH-IMPACT+SOFTWARE.;Java+Full+Stack+Developer+%7C+Spring+Boot+%2B+React+%E2%9A%A1;AI+%2F+ML+Engineer+%7C+97.55%25+Accuracy+%E2%80%A2+25%2B+FPS+%F0%9F%A4%96;Data+Analyst+%7C+SQL+%2B+Power+BI+%2B+Business+Intelligence+%F0%9F%93%8A;Available+for+Full-Time+Opportunities+%E2%9C%85\" alt=\"Typing SVG\"/>\n\n<br/>\n\n<!-- Status Badge -->\n<img src=\"https://img.shields.io/badge/%E2%97%8F%20AVAILABLE%20FOR%20FULL--TIME%20OPPORTUNITIES-F59E0B?style=flat-square&labelColor=07080b&color=f59e0b&logoColor=white\"/>\n\n<br/><br/>\n\n<!-- Quick Social Links & Views Counter -->\n<a href=\"https://www.linkedin.com/in/anil-gb-901961agb/\">\n  <img src=\"https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white\"/>\n</a>\n<a href=\"https://anil-gb-portfolio.vercel.app\">\n  <img src=\"https://img.shields.io/badge/Portfolio-F59E0B?style=for-the-badge&logo=vercel&logoColor=07080b\"/>\n</a>\n<a href=\"https://github.com/anilgb17\">\n  <img src=\"https://img.shields.io/badge/GitHub-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n</a>\n<a href=\"mailto:anilbadiger857@gmail.com\">\n  <img src=\"https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white\"/>\n</a>\n<a href=\"https://www.youtube.com/@anilGB9019\">\n  <img src=\"https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white\"/>\n</a>\n<img src=\"https://komarev.com/ghpvc/?username=anilgb17&color=f59e0b&style=for-the-badge&label=PROFILE+VIEWS\"/>\n\n</div>\n\n<br/>\n\n---\n\n## \u2726 ABOUT ME\n\n```yaml\nname          : Anil Govind Badiger\nhandle        : anilgb17\ntarget_roles  : [ \"Java Full Stack Developer\", \"AI / ML Engineer\", \"Data Analyst\" ]\nlocation      : Belagavi / Bengaluru, Karnataka, India\neducation     : B.E. in Computer Science \u2014 AGMRCET, Affiliated to VTU Belagavi (CGPA: 8.76 / 10)\nexperience    : Acaders (Java Full Stack Intern) + Smart Learn EdTech (AI/ML Intern)\nquant_metrics : \n  - \"97.55% AI detection accuracy at 25+ FPS real-time video inference\"\n  - \"25% REST API response latency reduction through query refactoring\"\n  - \"15+ production-grade REST APIs across 10+ relational tables\"\n  - \"4,000+ custom-labeled image computer vision dataset curated\"\n  - \"10 Karnataka districts end-to-end sales & supply chain analytics\"\ncertification : AI Business Intelligence Analyst \u2013 Skill India, NSDC (2025)\nlanguages     : English (Professional), Hindi, Kannada\ncreed         : \"CODE IS MY CRAFT. IMPACT IS MY GOAL.\"\navailability  : Open for Full-Time Roles | Collaborations | Open Source\n```\n\n> Computer Science and Engineering graduate (**CGPA 8.76/10**) with cross-disciplinary engineering expertise across **Java Full Stack Development**, **AI/Machine Learning (Computer Vision)**, and **Data Analytics & Business Intelligence**. Experienced through two software internships in engineering scalable backend architectures, training high-accuracy deep learning models, and transforming complex datasets into actionable business intelligence.\n\n<br/>\n\n---\n\n## \u2726 TAILORED RESUMES\n\n<div align=\"center\">\n\n| Target Domain | Core Focus & Tech Stack | Portfolio PDF | GitHub Direct |\n|:---|:---|:---:|:---:|\n| **\u2615 Java Full Stack Developer** | Java, Spring Boot, Hibernate, React.js, MySQL, REST APIs, JWT, Microservices | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Badiger_Software_Engineer.pdf) | [View in Repo](./resumes/Anil_Badiger_Software_Engineer.pdf) |\n| **\ud83e\udd16 AI / ML & Computer Vision** | Python, TensorFlow, PyTorch, scikit-learn, CNN, OpenCV, Real-Time Inference (97.55% Acc) | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Badiger_AIML_Engineer.pdf) | [View in Repo](./resumes/Anil_Badiger_AIML_Engineer.pdf) |\n| **\ud83d\udcca Data Analyst & BI Developer** | SQL, MySQL, Power BI, DAX, Power Query, Pandas, NumPy, Matplotlib, EDA, Excel | [Download PDF](https://anil-gb-portfolio.vercel.app/Anil_Badiger_Data_Analyst.pdf) | [View in Repo](./resumes/Anil_Badiger_Data_Analyst.pdf) |\n\n</div>\n\n<br/>\n\n---\n\n## \u2726 TECHNICAL ARSENAL\n\n<div align=\"center\">\n\n### \u2615 Backend & Full Stack Development\n<img src=\"https://skillicons.dev/icons?i=java,spring,hibernate,mysql,maven,docker,aws,postman&theme=dark&perline=8\"/>\n\n<br/>\n\n<img src=\"https://img.shields.io/badge/Java_17+-ED8B00?style=flat-square&logo=openjdk&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/JWT_Auth-000000?style=flat-square&logo=jsonwebtokens&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Hibernate_ORM-59666C?style=flat-square&logo=hibernate&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/RESTful_APIs-005571?style=flat-square&logo=fastapi&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Microservices_(Basic)-2496ED?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=black\"/>\n<img src=\"https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/AWS_(EC2/S3)-232F3E?style=flat-square&logo=amazonaws&logoColor=white\"/>\n\n<br/><br/>\n\n### \ud83e\udd16 AI, Machine Learning & Computer Vision\n<img src=\"https://skillicons.dev/icons?i=python,tensorflow,pytorch,sklearn,opencv,pandas,numpy&theme=dark&perline=7\"/>\n\n<br/>\n\n<img src=\"https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/CNN_Architectures-F59E0B?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Object_Detection-07080b?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Real--Time_Inference_(25+_FPS)-10B981?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Image_Preprocessing-3B82F6?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Data_Augmentation-8B5CF6?style=flat-square\"/>\n\n<br/><br/>\n\n### \ud83d\udcca Data Analytics & Business Intelligence\n<img src=\"https://img.shields.io/badge/SQL_(CTEs_&_Window_Functions)-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/MySQL_Schema_Design-4479A1?style=flat-square&logo=mysql&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Power_BI_Dashboards-F2C811?style=flat-square&logo=powerbi&logoColor=black\"/>\n<img src=\"https://img.shields.io/badge/DAX-EAA023?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Power_Query-00758F?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Matplotlib-11557C?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Seaborn-388E3C?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Exploratory_Data_Analysis_(EDA)-4C1D95?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Microsoft_Excel_(XLOOKUP_&_Pivot)-217346?style=flat-square&logo=microsoftexcel&logoColor=white\"/>\n\n<br/><br/>\n\n### \ud83d\udee0\ufe0f Developer Tools & Core Computer Science\n<img src=\"https://skillicons.dev/icons?i=git,github,vscode,vercel,linux&theme=dark&perline=5\"/>\n\n<br/>\n\n<img src=\"https://img.shields.io/badge/Git_&_GitHub-181717?style=flat-square&logo=github&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Jupyter_Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white\"/>\n<img src=\"https://img.shields.io/badge/Data_Structures_&_Algorithms_(DSA)-F59E0B?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/OOP_Principles-2563EB?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Operating_Systems-475569?style=flat-square\"/>\n<img src=\"https://img.shields.io/badge/Agile_/_SDLC-059669?style=flat-square\"/>\n\n</div>\n\n<br/>\n\n---\n\n## \u2726 FEATURED ENGINEERING PROJECTS\n\n<div align=\"center\">\n<table>\n  <tr>\n    <!-- Project 1: CSMS -->\n    <td width=\"50%\" valign=\"top\">\n      <h3 align=\"center\">\ud83d\ude97 Car Service Management System (CSMS)</h3>\n      <p align=\"center\">\n        <a href=\"https://github.com/anilgb17/Car-Service-Management-System\">\n          <img src=\"https://img.shields.io/badge/VIEW_REPOSITORY-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n        </a>\n      </p>\n      <p align=\"center\">\n        <img src=\"https://img.shields.io/badge/Java_17-ED8B00?style=flat-square&logo=openjdk&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=black\"/>\n        <img src=\"https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white\"/>\n      </p>\n      <ul align=\"left\">\n        <li>Engineered a production-ready full-stack application with <strong>10+ relational database tables</strong> to streamline automotive booking and servicing workflows.</li>\n        <li>Implemented robust <strong>role-based access control (Admin / User)</strong> using Spring Security and JWT to secure application endpoints and sessions.</li>\n        <li>Designed and integrated <strong>15+ RESTful APIs</strong> for structured data retrieval and management of customer, vehicle, and work-order records.</li>\n        <li>Built a responsive frontend using <strong>React.js, HTML5, and CSS3</strong>, enhancing service tracking efficiency and user interaction.</li>\n      </ul>\n    </td>\n    <!-- Project 2: AI Helmet & Mask Detection -->\n    <td width=\"50%\" valign=\"top\">\n      <h3 align=\"center\">\ud83d\udee1\ufe0f AI Helmet & Mask Detection for ATM Security</h3>\n      <p align=\"center\">\n        <a href=\"https://github.com/anilgb17/AI-Based-helmet-and-mask-detection-for-secure-ATM-transactions\">\n          <img src=\"https://img.shields.io/badge/VIEW_REPOSITORY-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n        </a>\n      </p>\n      <p align=\"center\">\n        <img src=\"https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/CNN-97.55%25_Accuracy-f59e0b?style=flat-square\"/>\n        <img src=\"https://img.shields.io/badge/Inference-25+_FPS-10B981?style=flat-square\"/>\n      </p>\n      <ul align=\"left\">\n        <li>Developed an intelligent ATM security system achieving <strong>97.55% detection accuracy</strong> across 3 categories: <em>helmet worn, face mask worn, and face uncovered</em>.</li>\n        <li>Curated, preprocessed, and augmented a custom dataset of <strong>4,000+ custom-labeled images</strong> using OpenCV for maximum real-world generalization.</li>\n        <li>Engineered an optimized real-time video inference pipeline achieving <strong>25+ FPS on live CCTV feeds</strong> to flag security violations before cash dispensing.</li>\n      </ul>\n    </td>\n  </tr>\n  <tr>\n    <!-- Project 3: KMF Dairy Analytics -->\n    <td width=\"50%\" valign=\"top\">\n      <h3 align=\"center\">\ud83d\udcc8 KMF Dairy Sales & Distribution Analytics</h3>\n      <p align=\"center\">\n        <a href=\"https://github.com/anilgb17/KMF-Dairy-Analytics\">\n          <img src=\"https://img.shields.io/badge/VIEW_REPOSITORY-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n        </a>\n      </p>\n      <p align=\"center\">\n        <img src=\"https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/SQL-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black\"/>\n        <img src=\"https://img.shields.io/badge/DAX-EAA023?style=flat-square\"/>\n      </p>\n      <ul align=\"left\">\n        <li>Simulated and analyzed end-to-end sales and supply chain distribution transaction data across <strong>10 Karnataka districts</strong>.</li>\n        <li>Conducted comprehensive EDA using <strong>Python (Pandas, NumPy)</strong> to uncover sales patterns, seasonal variations, and regional demand dynamics.</li>\n        <li>Queried and aggregated structured distribution data using <strong>SQL (CTEs, Window Functions)</strong> to generate key business performance metrics.</li>\n        <li>Constructed an interactive <strong>Power BI executive dashboard</strong> visualizing sales performance, regional trends, and channel profitability.</li>\n      </ul>\n    </td>\n    <!-- Project 4: IHCS -->\n    <td width=\"50%\" valign=\"top\">\n      <h3 align=\"center\">\ud83d\udca1 Intelligent Headlight Control System (IHCS)</h3>\n      <p align=\"center\">\n        <a href=\"https://github.com/anilgb17/Intelligent-Headlight-Control-System-IHCS-\">\n          <img src=\"https://img.shields.io/badge/VIEW_REPOSITORY-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n        </a>\n      </p>\n      <p align=\"center\">\n        <img src=\"https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white\"/>\n        <img src=\"https://img.shields.io/badge/Embedded_IoT-8A2BE2?style=flat-square\"/>\n      </p>\n      <ul align=\"left\">\n        <li>Engineered an automotive IoT safety system using microcontrollers and optical sensors to auto-dim vehicle headlights upon detecting oncoming traffic.</li>\n        <li>Eliminated night glare road hazards in real time with low-latency computer vision detection and microcontroller relay switching.</li>\n        <li>Integrated hardware-software communication for real-time vehicular telemetry and driver safety compliance.</li>\n      </ul>\n    </td>\n  </tr>\n</table>\n</div>\n\n<br/>\n\n---\n\n## \u2726 PROFESSIONAL INDUSTRY EXPERIENCE\n\n<div align=\"center\">\n\n| Company & Role | Duration & Location | Core Tech Stack | Quantified Impact & Key Contributions |\n|:---|:---|:---|:---|\n| **Acaders**<br/><sub>Java Full Stack Intern</sub> | **Feb 2026 \u2013 May 2026**<br/><sub>Bangalore, India</sub> | Spring Boot, React.js, MySQL, REST APIs, HTML5, CSS3 | \u2022 **Reduced response latency by 25%** across Spring Boot REST APIs via query refactoring and code optimizations.<br/>\u2022 Built **15+ backend endpoints** integrated with MySQL across **5+ modules**.<br/>\u2022 Designed responsive web interfaces in **React.js, HTML5, and CSS3**, ensuring cross-device compatibility.<br/>\u2022 Integrated frontend and backend services for seamless multi-module data exchange. |\n| **Smart Learn EdTech**<br/><sub>AI / ML Intern</sub> | **Jan 2025 \u2013 Apr 2025**<br/><sub>Bangalore, India</sub> | Python, TensorFlow, OpenCV, NumPy, CNN | \u2022 Built and trained CNN image classification models, **improving validation accuracy from 67% to 85.4%** through hyperparameter tuning.<br/>\u2022 Extracted, cleaned, and preprocessed **4,000+ custom-labeled images** using OpenCV & NumPy, resolving class imbalances.<br/>\u2022 **Cut training pipeline runtime by 15%** by optimizing preprocessing and data-augmentation workflows. |\n\n</div>\n\n<br/>\n\n---\n\n## \u2726 EDUCATION & CERTIFICATIONS\n\n<div align=\"center\">\n<table>\n  <tr>\n    <td width=\"60%\" valign=\"top\">\n      <h3>\ud83c\udf93 Bachelor of Engineering in Computer Science</h3>\n      <p><strong>AGM Rural College of Engineering and Technology Varur (AGMRCET)</strong><br/>\n      <em>Affiliated to Visvesvaraya Technological University (VTU Belagavi) | Hubballi, Karnataka</em></p>\n      <p><strong>Timeline:</strong> Dec 2022 \u2013 May 2026 &nbsp;|&nbsp; <strong>Cumulative GPA:</strong> <img src=\"https://img.shields.io/badge/CGPA-8.76%20%2F%2010-f59e0b?style=flat-square\"/></p>\n      <p><strong>Core Coursework:</strong> Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), Operating Systems, Computer Networks, Agile/SDLC.</p>\n    </td>\n    <td width=\"40%\" valign=\"top\">\n      <h3>\ud83d\udcdc Professional Certifications</h3>\n      <p><strong>AI Business Intelligence Analyst</strong><br/>\n      <em>Skill India & National Skill Development Corporation (NSDC) | 2025</em></p>\n      <hr/>\n      <h3>\ud83c\udf10 Spoken Languages</h3>\n      <p>\n        <img src=\"https://img.shields.io/badge/English-Professional_Working-blue?style=flat-square\"/>\n        <img src=\"https://img.shields.io/badge/Kannada-Native-green?style=flat-square\"/>\n        <img src=\"https://img.shields.io/badge/Hindi-Fluent-orange?style=flat-square\"/>\n      </p>\n    </td>\n  </tr>\n</table>\n</div>\n\n<br/>\n\n---\n\n## \u2726 GITHUB ANALYTICS & ACTIVITY\n\n<div align=\"center\">\n\n<!-- Streak Stats -->\n<img src=\"https://streak-stats.demolab.com/?user=anilgb17&theme=dark&hide_border=true&background=07080b&ring=f59e0b&fire=f59e0b&currStreakLabel=f59e0b&sideLabels=f8fafc&dates=94a3b8&border_radius=12\" width=\"70%\"/>\n\n</div>\n\n<br/>\n\n### \ud83d\udc0d Contribution Activity Snake\n\n<div align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/anilgb17/anilgb17/output/github-contribution-grid-snake-dark.svg\" width=\"100%\"/>\n</div>\n\n<br/>\n\n---\n\n## \u2726 CONNECT WITH ME\n\n<div align=\"center\">\n\n<a href=\"https://www.linkedin.com/in/anil-gb-901961agb/\">\n  <img src=\"https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white\"/>\n</a>\n&nbsp;\n<a href=\"https://anil-gb-portfolio.vercel.app\">\n  <img src=\"https://img.shields.io/badge/Portfolio-Visit_Website-F59E0B?style=for-the-badge&logo=vercel&logoColor=07080b\"/>\n</a>\n&nbsp;\n<a href=\"mailto:anilbadiger857@gmail.com\">\n  <img src=\"https://img.shields.io/badge/Gmail-anilbadiger857-EA4335?style=for-the-badge&logo=gmail&logoColor=white\"/>\n</a>\n&nbsp;\n<a href=\"https://www.youtube.com/@anilGB9019\">\n  <img src=\"https://img.shields.io/badge/YouTube-Subscribe-FF0000?style=for-the-badge&logo=youtube&logoColor=white\"/>\n</a>\n&nbsp;\n<a href=\"https://github.com/anilgb17\">\n  <img src=\"https://img.shields.io/badge/GitHub-Follow-07080b?style=for-the-badge&logo=github&logoColor=f59e0b\"/>\n</a>\n\n</div>\n\n<br/>\n\n<!-- Cinematic Footer Banner -->\n<img src=\"https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,1,2,3,6&height=130&section=footer&fontColor=f59e0b\" width=\"100%\"/>\n\n<div align=\"center\">\n  <sub>\n    <img src=\"https://img.shields.io/badge/CODE_IS_MY_CRAFT._IMPACT_IS_MY_GOAL.-F59E0B?style=flat-square&labelColor=07080b\"/>\n    <br/>\n    <strong>Anil Govind Badiger</strong> &bull; Full Stack Software Engineer &bull; AI/ML &bull; Data Analyst &bull; 2026\n  </sub>\n</div>\n";
+    document.getElementById('raw-view').textContent = rawMarkdown;
+    document.getElementById('preview').innerHTML = marked.parse(rawMarkdown);
 
-  <!-- Animated Header Wave Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=220&section=header&text=ANIL%20GB&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=Software%20Developer%20%7C%20AI%20%26%20Computer%20Vision%20%7C%20IoT%20Innovator&descAlignY=58&descAlign=50" width="100%" alt="Anil GB Header Banner"/>
-
-  <!-- Animated Typing SVG -->
-  <a href="https://github.com/anilgb17">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&background=0D111700&center=true&vCenter=true&width=650&height=50&lines=Hi+there!+%F0%9F%91%8B+I'm+Anil+GB;Full+Stack+Developer+%26+Software+Engineer+%F0%9F%92%BB;AI%2C+Computer+Vision+%26+Deep+Learning+Builder+%F0%9F%A4%96;IoT%2C+Smart+Systems+%26+Hardware+Innovator+%E2%9A%A1;Crafting+Scalable%2C+High-Performance+Web+Apps+%F0%9F%9A%80" alt="Typing SVG" />
-  </a>
-
-  <!-- Profile Badges & Stats Counter -->
-  <p align="center">
-    <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-    </a>
-    <a href="https://www.youtube.com/@anilGB9019" target="_blank">
-      <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/>
-    </a>
-    <a href="https://github.com/anilgb17" target="_blank">
-      <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/>
-    </a>
-    <a href="https://github.com/anilgb17?tab=repositories" target="_blank">
-      <img src="https://img.shields.io/badge/25+_Repositories-00D26A?style=for-the-badge&logo=git&logoColor=white" alt="Repositories Badge"/>
-    </a>
-    <img src="https://komarev.com/ghpvc/?username=anilgb17&color=38bdf8&style=for-the-badge&label=VIEWS" alt="Profile Views"/>
-  </p>
-
-</div>
-
----
-
-### 💫 About Me
-
-\`\`\`yaml
-name: Anil GB
-handle: anilgb17
-focus_areas: [Full-Stack Development, AI & Computer Vision, Embedded IoT]
-passions: [Clean Code, System Architecture, UI/UX Animation, Open Source]
-motto: "Transforming ambitious ideas into clean, functional, and intelligent digital products."
-\`\`\`
-
-- 🔭 **Currently Building**: Intelligent web platforms and computer vision systems.
-- 💡 **Specialties**: Scalable JavaScript/TypeScript applications, Python AI models, and IoT sensor integrations.
-- 🌱 **Deepening Knowledge**: Advanced Neural Architectures, Cloud Microservices, and High-Performance Web Graphics.
-- 🎯 **Open For**: Collaborative development on impactful open-source tools and cutting-edge software solutions.
-- 💬 **Ask Me About**: \`React\`, \`Node.js\`, \`Python\`, \`Computer Vision\`, \`IoT Automation\`, \`Data Structures & Algorithms\`.
-
-<br/>
-
----
-
-### 🛠️ Tech Stack & Arsenal
-
-<div align="center">
-
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=js,ts,python,cs,c,cpp,html,css&theme=dark" alt="Languages"/>
-  </p>
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=react,tailwind,bootstrap,vite,nodejs,express,mongodb,mysql&theme=dark" alt="Frameworks and Databases"/>
-  </p>
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,linux,arduino,firebase,figma&theme=dark" alt="Tools and Platforms"/>
-  </p>
-
-</div>
-
-<details>
-<summary><b>📂 Categorized Skills Breakdown (Click to expand)</b></summary>
-<br/>
-
-| Category | Technologies & Tools |
-| :--- | :--- |
-| **Languages** | JavaScript (ES6+), TypeScript, Python 3, C#, C, C++, HTML5, CSS3 |
-| **Frontend Engineering** | React.js, Tailwind CSS, Responsive Web Design, DOM Manipulation, CSS Animations |
-| **Backend & Databases** | Node.js, Express.js, RESTful APIs, MongoDB, MySQL, Firebase, LocalStorage Persistence |
-| **AI & Embedded Systems** | Computer Vision (OpenCV), Deep Learning, Microcontrollers, Sensor Integration (IoT) |
-| **Dev Tools & Workflow** | Git, GitHub Actions, VS Code, Linux CLI, Postman, NPM, JSON APIs |
-
-</details>
-
-<br/>
-
----
-
-### 🚀 Featured Engineering Projects
-
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">🚗 Car Service Management System</h3>
-      <p align="center">
-        <a href="https://github.com/anilgb17/Car-Service-Management-System">
-          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="Car Service System"/>
-        </a>
-        <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
-        <img src="https://img.shields.io/badge/Platform-Web%20App-brightgreen?style=flat-square" alt="Web App"/>
-      </p>
-      <p>Comprehensive service booking platform featuring a customer booking wizard alongside an administrative suite managing work orders, mechanics, and operational metrics.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🛡️ AI Helmet & Mask Detection (ATM)</h3>
-      <p align="center">
-        <a href="https://github.com/anilgb17/AI-Based-helmet-and-mask-detection-for-secure-ATM-transactions">
-          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="AI ATM System"/>
-        </a>
-        <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-        <img src="https://img.shields.io/badge/AI-Computer%20Vision-red?style=flat-square&logo=opencv" alt="CV"/>
-      </p>
-      <p>Real-time visual security system preventing fraudulent transactions by detecting masked or helmeted faces in ATM booths before authorizing transaction flows.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">📊 DSA Visualizer</h3>
-      <p align="center">
-        <a href="https://github.com/anilgb17/DSA-Visualizer">
-          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="DSA Visualizer"/>
-        </a>
-        <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS"/>
-        <img src="https://img.shields.io/badge/Visualizer-Interactive-orange?style=flat-square" alt="Visualizer"/>
-      </p>
-      <p>Interactive algorithm visualizer rendering step-by-step executions of core data structures, sorting algorithms, and traversal paths with dynamic animation speeds.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">💡 Intelligent Headlight Control (IHCS)</h3>
-      <p align="center">
-        <a href="https://github.com/anilgb17/Intelligent-Headlight-Control-System-IHCS-">
-          <img src="https://img.shields.io/badge/Repo-Explore-blue?style=flat-square&logo=github" alt="IHCS"/>
-        </a>
-        <img src="https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-        <img src="https://img.shields.io/badge/Hardware-IoT%20%2F%20Sensors-8A2BE2?style=flat-square&logo=arduino" alt="IoT"/>
-      </p>
-      <p>Automated automotive safety system utilizing microcontrollers and optical sensors to eliminate night glare by auto-dimming headlights for oncoming traffic.</p>
-    </td>
-  </tr>
-</table>
-
-<br/>
-
-### 📈 Activity & Engineering Analytics
-
-<div align="center">
-  <table border="0">
-    <tr>
-      <td align="center" width="50%">
-        <a href="https://github.com/anilgb17">
-          <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anilgb17&theme=tokyonight" alt="Anil's Profile Details" width="100%"/>
-        </a>
-      </td>
-      <td align="center" width="50%">
-        <a href="https://github.com/anilgb17">
-          <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=anilgb17&theme=tokyonight" alt="Languages Breakdown" width="100%"/>
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <a href="https://github.com/anilgb17">
-          <img src="https://streak-stats.demolab.com/?user=anilgb17&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&border_radius=10" alt="Streak Stats" width="95%"/>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-
-<br/>
-
----
-
-### 🐍 Contribution Activity Snake
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/anilgb17/anilgb17/output/github-contribution-grid-snake-dark.svg" alt="Contribution Grid Snake" width="100%"/>
-</div>
-
-<br/>
-
----
-
-### ⚡ Daily Inspiration & Terminal
-
-<div align="center">
-  <a href="https://github.com/anilgb17">
-    <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Quote" />
-  </a>
-</div>
-
-<br/>
-
----
-
-### 🌐 Connect With Me
-
-<div align="center">
-
-  <a href="https://www.linkedin.com/in/anil-gb-901961agb/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  &nbsp;
-  <a href="https://www.youtube.com/@anilGB9019" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Channel"/>
-  </a>
-  &nbsp;
-  <a href="https://www.youtube.com/@GIRISHSFX" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube_SFX-282828?style=for-the-badge&logo=youtube&logoColor=red" alt="Visuals Channel"/>
-  </a>
-  &nbsp;
-  <a href="https://github.com/anilgb17" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-  </a>
-
-</div>
-
-<br/>
-
-<div align="center">
-
-  <!-- Animated Footer Wave -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,38&height=120&section=footer" width="100%" alt="Footer Wave"/>
-
-  <p align="center">
-    <sub>Crafted with passion, caffeine, and clean code &bull; <b>&copy; Anil GB</b></sub>
-  </p>
-
-</div>`;
-
-    document.getElementById('raw-content').textContent = markdownContent;
-
-    function switchTab(tab) {
-      const visualEl = document.getElementById('visual-content');
-      const rawEl = document.getElementById('raw-content');
-      const tabVisual = document.getElementById('tab-visual');
-      const tabRaw = document.getElementById('tab-raw');
-
-      if (tab === 'visual') {
-        visualEl.style.display = 'block';
-        rawEl.style.display = 'none';
-        tabVisual.classList.add('active');
-        tabRaw.classList.remove('active');
-      } else {
-        visualEl.style.display = 'none';
-        rawEl.style.display = 'block';
-        tabVisual.classList.remove('active');
-        tabRaw.classList.add('active');
-      }
+    let isRaw = false;
+    function toggleRaw() {
+      isRaw = !isRaw;
+      document.getElementById('preview').style.display = isRaw ? 'none' : 'block';
+      document.getElementById('raw-view').style.display = isRaw ? 'block' : 'none';
+      document.getElementById('toggleBtn').textContent = isRaw ? 'View Rendered Preview' : 'View Raw Markdown';
     }
 
-    function copyMarkdown() {
-      navigator.clipboard.writeText(markdownContent).then(() => {
+    function copyRaw() {
+      navigator.clipboard.writeText(rawMarkdown).then(() => {
         const toast = document.getElementById('toast');
         toast.style.display = 'block';
-        const copyBtn = document.getElementById('copyBtn');
-        copyBtn.textContent = '✅ Copied!';
-        setTimeout(() => {
-          toast.style.display = 'none';
-          copyBtn.textContent = '📋 Copy Full README';
-        }, 3000);
+        setTimeout(() => toast.style.display = 'none', 3000);
       });
     }
   </script>
