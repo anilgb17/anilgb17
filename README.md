@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <!-- Cinematic Header Banner — Obsidian + Amber Gold -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,1,2,3,6&height=260&section=header&text=ANIL%20GOVIND%20BADIGER&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=42&desc=FULL%20STACK%20%E2%80%A2%20AI%2FML%20ENGINEER%20%E2%80%A2%20DATA%20ANALYST&descAlignY=62&descAlign=50&descSize=16&descColor=f59e0b" width="100%"/>
@@ -26,7 +26,7 @@
 <a href="mailto:anilbadiger857@gmail.com">
   <img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
-<a href="https://www.youtube.com/@anilGB9019">
+<a href="https://www.youtube.com/@GIRISHSFX">
   <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
 </a>
 <img src="https://komarev.com/ghpvc/?username=anilgb17&color=f59e0b&style=for-the-badge&label=PROFILE+VIEWS"/>
@@ -345,7 +345,7 @@ availability  : Open for Full-Time Roles | Collaborations | Open Source
   <img src="https://img.shields.io/badge/Gmail-anilbadiger857-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 &nbsp;
-<a href="https://www.youtube.com/@anilGB9019">
+<a href="https://www.youtube.com/@GIRISHSFX">
   <img src="https://img.shields.io/badge/YouTube-Subscribe-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/>
 </a>
 &nbsp;
